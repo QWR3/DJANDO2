@@ -1,4 +1,4 @@
-"""MyDjango URL Configuration
+"""configs URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,11 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from calculator.views import calc
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('calculator/<int:first>/<str:do>/<int:second>/', calc),
+    path('computers/', include('computers.urls')),
 ]
