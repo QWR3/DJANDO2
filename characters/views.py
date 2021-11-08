@@ -1,4 +1,3 @@
-from django.forms import model_to_dict
 from rest_framework import status
 from rest_framework.views import APIView, Response
 from characters.models import CharacterModel
