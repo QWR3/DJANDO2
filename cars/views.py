@@ -1,8 +1,7 @@
 from django.forms import model_to_dict
-from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.response import Response
 
-# Create your views here.
 from cars.models import CarModel
 
 
@@ -19,28 +18,26 @@ class CarListCreateView(APIView):
 
 class CarReadUpdateDeleteView(APIView):
     def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
+        pk = kwargs.get("pk")
         exists = CarModel.objects.filter(pk=pk).exists()
         if not exists:
-            return Response("Go go away")
+            return Response('go away')
         car = CarModel.objects.get(pk=pk)
         return Response(model_to_dict(car))
 
     def put(self, *args, **kwargs):
         pk = kwargs.get('pk')
-        exists = CarModel.objects.filter(pk=pk).exists()
+        exists = CarModel.objects.filter(pk='pk').exists()
         if not exists:
-            return Response("yps")
+            return Response('go away')
         data = self.request.data.dict()
-        CarModel.objects.filter(pk=pk).update(**data)
-        car = CarModel.objects.get(pk=pk)
-        print(car)
-        return Response(model_to_dict(car))
+        car = CarModel.objects.filter(pk="pk").update(**data)
+        return Response('updated')
 
     def delete(self, *args, **kwargs):
         pk = kwargs.get('pk')
-        exists = CarModel.objects.filter(pk=pk).exists()
+        exists = CarModel.objects.filter(pk='pk').exists()
         if not exists:
-            return Response('go go away')
-        CarModel.objects.filter(pk=pk).delete()
-        return Response('')
+            return Response('go away')
+        CarModel.objects.get(pk='pk').delete()
+        return Response('deleted')
