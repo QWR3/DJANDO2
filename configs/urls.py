@@ -16,9 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import cars
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cars/', include("cars.urls"))
+    path('computers/', include("computers.urls"))
 ]
